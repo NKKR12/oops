@@ -8,10 +8,7 @@ private:
     int age;
 
 public:
-    void setDetails(string patientName, int patientAge) {
-        name = patientName;
-        age = patientAge;
-    }
+    Patient(const string& name, int age) : name(name), age(age) {}
 
     void displayDetails() const {
         cout << "Patient Name: " << name << endl;
@@ -25,10 +22,7 @@ private:
     string roomType;
 
 public:
-    void setRoom(int number, string type) {
-        roomNumber = number;
-        roomType = type;
-    }
+    Room(int roomNumber, const string& roomType) : roomNumber(roomNumber), roomType(roomType) {}
 
     void displayRoomInfo() const {
         cout << "Room Number: " << roomNumber << endl;
@@ -37,11 +31,8 @@ public:
 };
 
 int main() {
-    Patient patient1;
-    patient1.setDetails("John Doe", 30);
-
-    Room room1;
-    room1.setRoom(101, "ICU");
+    Patient patient1("John Doe", 30);
+    Room room1(101, "ICU");
 
     cout << "Patient Information:" << endl;
     patient1.displayDetails();
@@ -51,3 +42,4 @@ int main() {
 
     return 0;
 }
+
