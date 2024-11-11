@@ -8,9 +8,9 @@ private:
     int age;
 
 public:
-    void setDetails(string patientName, int patientAge) {
-        name = patientName;
-        age = patientAge;
+    void setDetails(string name, int age) {
+        this->name = name;
+        this->age = age;
     }
 
     void displayDetails() const {
@@ -25,9 +25,9 @@ private:
     string roomType;
 
 public:
-    void setRoom(int number, string type) {
-        roomNumber = number;
-        roomType = type;
+    void setRoom(int roomNumber, string roomType) {
+        this->roomNumber = roomNumber;
+        this->roomType = roomType;
     }
 
     void displayRoomInfo() const {
@@ -37,17 +37,17 @@ public:
 };
 
 int main() {
-    Patient patient1;
-    patient1.setDetails("John Doe", 30);
+    Patient patients[3];
 
-    Room room1;
-    room1.setRoom(101, "ICU");
+    patients[0].setDetails("John Doe", 30);
+    patients[1].setDetails("Jane Smith", 25);
+    patients[2].setDetails("Alice Johnson", 40);
 
     cout << "Patient Information:" << endl;
-    patient1.displayDetails();
-    
-    cout << "\nRoom Information:" << endl;
-    room1.displayRoomInfo();
+    for (int i = 0; i < 3; ++i) {
+        cout << "\nPatient " << i + 1 << ":" << endl;
+        patients[i].displayDetails();
+    }
 
     return 0;
 }
