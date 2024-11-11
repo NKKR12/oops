@@ -6,7 +6,6 @@ class Patient {
 private:
     string name;
     int age;
-
 public:
     Patient(const string& name, int age) : name(name), age(age) {}
 
@@ -20,7 +19,6 @@ class Room {
 private:
     int roomNumber;
     string roomType;
-
 public:
     Room(int roomNumber, const string& roomType) : roomNumber(roomNumber), roomType(roomType) {}
 
@@ -31,15 +29,21 @@ public:
 };
 
 int main() {
-    Patient patient1("John Doe", 30);
-    Room room1(101, "ICU");
+    Patient patients[3] = {
+        Patient("John Doe", 30),
+        Patient("Jane Smith", 25),
+        Patient("Alice Johnson", 40)
+    };
 
     cout << "Patient Information:" << endl;
-    patient1.displayDetails();
-    
+    for (int i = 0; i < 3; ++i) {
+        cout << "\nPatient " << i + 1 << ":" << endl;
+        patients[i].displayDetails();
+    }
+
+    Room room1(101, "ICU");
     cout << "\nRoom Information:" << endl;
     room1.displayRoomInfo();
 
     return 0;
 }
-
