@@ -6,14 +6,27 @@ class Patient {
 private:
     string name;
     int age;
+    static int patientCount;
 public:
-    Patient(const string& name, int age) : name(name), age(age) {}
+    Patient(const string& name, int age) : name(name), age(age) {
+        ++patientCount;
+    }
+
+    ~Patient() {
+        --patientCount;
+    }
 
     void displayDetails() const {
         cout << "Patient Name: " << name << endl;
         cout << "Patient Age: " << age << endl;
     }
+
+    static int getPatientCount() {
+        return patientCount;
+    }
 };
+
+int Patient::patientCount = 0;
 
 class Room {
 private:
@@ -29,7 +42,6 @@ public:
 };
 
 int main() {
-    // Dynamically allocate an array of Patient objects
     Patient* patients[3];
     patients[0] = new Patient("John Doe", 30);
     patients[1] = new Patient("Jane Smith", 25);
@@ -41,6 +53,8 @@ int main() {
         patients[i]->displayDetails();
     }
 
+    cout << "\nTotal Patients: " << Patient::getPatientCount() << endl;
+
     Room* room1 = new Room(101, "ICU");
     cout << "\nRoom Information:" << endl;
     room1->displayRoomInfo();
@@ -49,6 +63,8 @@ int main() {
         delete patients[i];
     }
     delete room1;
+
+    cout << "\nTotal Patients after deletion: " << Patient::getPatientCount() << endl;
 
     return 0;
 }
