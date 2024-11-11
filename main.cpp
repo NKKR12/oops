@@ -29,21 +29,27 @@ public:
 };
 
 int main() {
-    Patient patients[3] = {
-        Patient("John Doe", 30),
-        Patient("Jane Smith", 25),
-        Patient("Alice Johnson", 40)
-    };
+    Patient* patients[3];
+    patients[0] = new Patient("John Doe", 30);
+    patients[1] = new Patient("Jane Smith", 25);
+    patients[2] = new Patient("Alice Johnson", 40);
 
     cout << "Patient Information:" << endl;
     for (int i = 0; i < 3; ++i) {
         cout << "\nPatient " << i + 1 << ":" << endl;
-        patients[i].displayDetails();
+        patients[i]->displayDetails();
     }
 
-    Room room1(101, "ICU");
+    // Dynamically allocate a Room object
+    Room* room1 = new Room(101, "ICU");
     cout << "\nRoom Information:" << endl;
-    room1.displayRoomInfo();
+    room1->displayRoomInfo();
+
+    // Deallocate memory to avoid memory leaks
+    for (int i = 0; i < 3; ++i) {
+        delete patients[i];
+    }
+    delete room1;
 
     return 0;
 }
