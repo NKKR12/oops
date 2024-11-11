@@ -7,6 +7,7 @@ private:
     string name;
     int age;
     static int patientCount;
+
 public:
     Patient(const string& name, int age) : name(name), age(age) {
         ++patientCount;
@@ -24,6 +25,24 @@ public:
     static int getPatientCount() {
         return patientCount;
     }
+
+    string getName() const {
+        return name;
+    }
+
+    void setName(const string& newName) {
+        name = newName;
+    }
+
+    int getAge() const {
+        return age;
+    }
+
+    void setAge(int newAge) {
+        if (newAge > 0) {
+            age = newAge;
+        }
+    }
 };
 
 int Patient::patientCount = 0;
@@ -32,12 +51,31 @@ class Room {
 private:
     int roomNumber;
     string roomType;
+
 public:
     Room(int roomNumber, const string& roomType) : roomNumber(roomNumber), roomType(roomType) {}
 
     void displayRoomInfo() const {
         cout << "Room Number: " << roomNumber << endl;
         cout << "Room Type: " << roomType << endl;
+    }
+
+    int getRoomNumber() const {
+        return roomNumber;
+    }
+
+    void setRoomNumber(int newRoomNumber) {
+        if (newRoomNumber > 0) {
+            roomNumber = newRoomNumber;
+        }
+    }
+
+    string getRoomType() const {
+        return roomType;
+    }
+
+    void setRoomType(const string& newRoomType) {
+        roomType = newRoomType;
     }
 };
 
