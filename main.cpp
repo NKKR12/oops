@@ -29,6 +29,7 @@ public:
 };
 
 int main() {
+    // Dynamically allocate an array of Patient objects
     Patient* patients[3];
     patients[0] = new Patient("John Doe", 30);
     patients[1] = new Patient("Jane Smith", 25);
