@@ -14,6 +14,10 @@ private:
     static int patientCount;
 
 public:
+    Patient() : name("Unknown"), age(0) {
+        ++patientCount;
+    }
+
     Patient(const string& name, int age) : name(name), age(age) {
         ++patientCount;
     }
@@ -58,6 +62,8 @@ private:
     string roomType;
 
 public:
+    Room() : roomNumber(0), roomType("Not Assigned") {}
+
     Room(int roomNumber, const string& roomType) : roomNumber(roomNumber), roomType(roomType) {}
 
     void displayDetails() const override {
