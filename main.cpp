@@ -2,7 +2,12 @@
 #include <string>
 using namespace std;
 
-class Patient {
+class Person {
+public:
+    virtual void displayDetails() const = 0;
+};
+
+class Patient : public Person {
 private:
     string name;
     int age;
@@ -17,7 +22,7 @@ public:
         --patientCount;
     }
 
-    void displayDetails() const {
+    void displayDetails() const override {
         cout << "Patient Name: " << name << endl;
         cout << "Patient Age: " << age << endl;
     }
@@ -47,7 +52,7 @@ public:
 
 int Patient::patientCount = 0;
 
-class Room {
+class Room : public Person {
 private:
     int roomNumber;
     string roomType;
@@ -55,7 +60,7 @@ private:
 public:
     Room(int roomNumber, const string& roomType) : roomNumber(roomNumber), roomType(roomType) {}
 
-    void displayRoomInfo() const {
+    void displayDetails() const override {
         cout << "Room Number: " << roomNumber << endl;
         cout << "Room Type: " << roomType << endl;
     }
@@ -95,7 +100,7 @@ int main() {
 
     Room* room1 = new Room(101, "ICU");
     cout << "\nRoom Information:" << endl;
-    room1->displayRoomInfo();
+    room1->displayDetails();
 
     for (int i = 0; i < 3; ++i) {
         delete patients[i];
