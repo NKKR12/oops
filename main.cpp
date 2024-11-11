@@ -40,10 +40,12 @@ int main() {
         patients[i]->displayDetails();
     }
 
+    // Dynamically allocate a Room object
     Room* room1 = new Room(101, "ICU");
     cout << "\nRoom Information:" << endl;
     room1->displayRoomInfo();
 
+    // Deallocate memory to avoid memory leaks
     for (int i = 0; i < 3; ++i) {
         delete patients[i];
     }
